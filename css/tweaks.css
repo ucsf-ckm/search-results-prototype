@@ -1,0 +1,4 @@
+.large-4 .panel {
+    max-height: 25em;
+		overflow:hidden;
+}
