@@ -2,7 +2,3 @@
     height: 15em;
     overflow-y: auto;
 }
-
-.results-row {
-	visibility: hidden;
-}

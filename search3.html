@@ -20,7 +20,6 @@
       <div class="panel radius">
         <p><strong>Database list</strong></p>
         <div class="results-list" id="dbs">
-          <progress>Loading&hellip;</progress>
         </div>        			
       </div>
     </div>
@@ -29,7 +28,6 @@
       <div class="panel radius">
         <p><strong>Journals list</strong></p>
         <div class="results-list" id="sfx">
-          <progress>Loading&hellip;</progress>
         </div>
       </div>
     </div>
@@ -38,7 +36,6 @@
       <div class="panel radius">
         <p><strong>Books and Journals</strong></p>
         <div class="results-list" id="millennium">
-          <progress>Loading&hellip;</progress>
         </div>
       </div>
     </div>
@@ -49,7 +46,6 @@
       <div class="panel radius">
         <p><strong>PubMed</strong></p>
         <div class="results-list" id="pubmed">
-          <progress>Loading&hellip;</progress>
         </div>       			
       </div>
     </div>
@@ -58,7 +54,6 @@
       <div class="panel radius">
         <p><strong>Guides</strong></p>
         <div class="results-list" id="libguides">
-          <progress>Loading&hellip;</progress>
         </div>       			
       </div>
     </div>
@@ -67,19 +62,10 @@
       <div class="panel radius">
         <p><strong>Library Info</strong></p>
         <div class="results-list" id="drupal6">
-          <progress>Loading&hellip;</progress>
         </div>
       </div>
     </div>
   </div>
-
-
-  <div class="row">
-    <div class="large-12 columns">
-      <img src="img/footer.png" alt="">
-    </div>
-  </div>
-
 
   <script src="js/vendor/jquery.js"></script>
   <script src="js/foundation.min.js"></script>
@@ -131,8 +117,8 @@
   };
   
   var runSearch = function (event) {
-      $('.results-row').each(function (index, elem) {
-        elem.setAttribute('style', 'visibility: visible');
+      $('.results-list').each(function (index, elem) {
+        elem.innerHTML = '<progress>Loading&hellip;</progress>';
       });
       var terms = this.querySelector('.search-terms').value;
       window.location.hash = terms;
