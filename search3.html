@@ -100,7 +100,7 @@
       var l = results.data.length;
       if (l) {
         for (var i=0; i<l; i++) {
-          if (results.data[i].url.match(/^(https?:)?\/\/[\w:\/\?&%=\.\-~]+$/)) {
+          if (results.data[i].url.match(/^(https?:)?\/\/[\w:\/\?&%=\.\-~\+]+$/)) {
             li = document.createElement('li');
             a = document.createElement('a');
             a.setAttribute('href', results.data[i].url);
@@ -130,8 +130,7 @@
     }
   };
   
-  $('.search-form').each(function (index, elem) { 
-    elem.onsubmit = function (event) {
+  var runSearch = function (event) {
       $('.results-row').each(function (index, elem) {
         elem.setAttribute('style', 'visibility: visible');
       });
@@ -140,7 +139,15 @@
       event.preventDefault ? event.preventDefault() : event.returnValue = false;
       UCSF.Library.search({q: terms, async: true}, success, failure);
     };
+
+  $('.search-form').each(function (index, elem) { 
+    elem.onsubmit = runSearch;
   });
+
+  if (window.location.hash) {
+    document.querySelector('.search-terms').value = window.location.hash.substring(1);
+    runSearch.call(document, document);
+  }
   </script>
 </body>
 </html>
